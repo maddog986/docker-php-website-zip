@@ -1,0 +1,16 @@
+# Compose file is designed to run this on a local machine for development.
+version: "3"
+services:
+  test-server:
+    container_name: test-server
+    build: .
+    volumes:
+      - ./www:/var/www
+    ports:
+      - 80:80 # web port
+      - 3307:3306 # mysql
+    environment:
+      - WEBSITE_HOSTNAME=test.local
+      - MYSQL_DATABASE=test_database
+      - MYSQL_USERNAME=tester
+      - MYSQL_PASSWORD=Tester0!
